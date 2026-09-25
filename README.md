@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Division Trooper | High Speed</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}body{background:#07090d;color:#fff;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 15% 20%,rgba(0,140,255,.16),transparent 30%),radial-gradient(circle at 85% 70%,rgba(0,255,180,.09),transparent 30%),linear-gradient(135deg,#05070a,#0b1017 55%,#05070a)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:45px 45px}
+nav{position:fixed;top:0;left:0;width:100%;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 7%;background:rgba(4,7,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08);z-index:1000}
+.logo{display:flex;align-items:center;gap:13px;font-weight:900;letter-spacing:1px}.logo-icon{width:43px;height:43px;border:2px solid #24a8ff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#24a8ff;font-size:19px;box-shadow:0 0 20px rgba(36,168,255,.25)}.logo span{color:#24a8ff}
+nav ul{list-style:none;display:flex;gap:30px}nav a{color:#b8c1cb;text-decoration:none;font-size:14px;font-weight:700;transition:.25s}nav a:hover{color:#fff}
+.hero{min-height:100vh;padding:150px 8% 80px;display:flex;align-items:center;position:relative}.hero-content{max-width:800px}.badge{display:inline-flex;padding:9px 15px;border:1px solid rgba(36,168,255,.4);background:rgba(36,168,255,.08);border-radius:50px;color:#53bcff;font-size:12px;font-weight:800;letter-spacing:2px;margin-bottom:24px}.hero h1{font-size:clamp(48px,7vw,92px);line-height:.95;font-weight:950;letter-spacing:-4px}.hero h1 span{color:#24a8ff;text-shadow:0 0 30px rgba(36,168,255,.35)}.hero p{margin-top:28px;max-width:650px;color:#a8b1bb;line-height:1.8;font-size:17px}
+.buttons{display:flex;gap:14px;margin-top:35px;flex-wrap:wrap}.btn{padding:15px 25px;border-radius:10px;text-decoration:none;font-weight:800;font-size:14px;transition:.25s;cursor:pointer;border:none}.btn-primary{color:#00111d;background:#24a8ff;box-shadow:0 0 25px rgba(36,168,255,.22)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 35px rgba(36,168,255,.35)}.btn-secondary{color:#fff;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04)}.btn-secondary:hover{background:rgba(255,255,255,.09)}
+.hero-panel{position:absolute;right:7%;width:340px;padding:25px;background:rgba(12,17,24,.75);border:1px solid rgba(255,255,255,.1);border-radius:20px;backdrop-filter:blur(18px);box-shadow:0 25px 80px rgba(0,0,0,.35)}.status{display:flex;justify-content:space-between;padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.08)}.status small{color:#75808c}.online{color:#52e38a;font-weight:800}.stat{margin-top:17px}.stat-top{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px}.bar{height:5px;background:#1a222c;border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;width:90%;background:#24a8ff;border-radius:10px}
+section{padding:100px 8%}.section-head{margin-bottom:45px}.kicker{color:#24a8ff;font-size:12px;font-weight:900;letter-spacing:3px}.section-head h2{margin-top:10px;font-size:42px}.section-head p{margin-top:12px;color:#87919d}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{padding:30px;min-height:210px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));transition:.3s}.card:hover{transform:translateY(-7px);border-color:rgba(36,168,255,.35);box-shadow:0 20px 50px rgba(0,0,0,.25)}.card-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:13px;background:rgba(36,168,255,.1);color:#24a8ff;font-size:21px;margin-bottom:22px}.card h3{margin-bottom:10px}.card p{color:#8d98a4;line-height:1.7;font-size:14px}
+.ranks{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.rank{text-align:center;padding:25px 15px;border-radius:15px;background:#0c1219;border:1px solid rgba(255,255,255,.07);transition:.25s}.rank:hover{border-color:#24a8ff;transform:translateY(-5px)}.rank-number{font-size:30px;font-weight:900;color:#24a8ff;margin-bottom:12px}.rank h3{font-size:14px}.rank p{color:#68737f;font-size:11px;margin-top:6px}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:18px}.rule{padding:22px;display:flex;gap:17px;border:1px solid rgba(255,255,255,.07);border-radius:14px;background:rgba(255,255,255,.025)}.rule-num{min-width:35px;height:35px;border-radius:9px;background:#24a8ff;color:#00111d;display:flex;align-items:center;justify-content:center;font-weight:900}.rule p{color:#a2acb6;font-size:14px;line-height:1.6}
+.join{border:1px solid rgba(36,168,255,.2);border-radius:25px;padding:55px;text-align:center;background:radial-gradient(circle at 50% 0,rgba(36,168,255,.12),transparent 55%),rgba(10,15,21,.8)}.join h2{font-size:40px}.join p{max-width:600px;margin:15px auto 0;color:#8e99a5;line-height:1.7}
+footer{padding:35px 8%;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;color:#68737f;font-size:12px}
+@media(max-width:900px){nav{padding:0 5%}nav ul{display:none}.hero{padding:130px 6% 70px}.hero-panel{display:none}section{padding:75px 6%}.grid{grid-template-columns:1fr}.ranks{grid-template-columns:repeat(2,1fr)}.rules{grid-template-columns:1fr}.join{padding:35px 20px}footer{flex-direction:column;gap:10px}}
+@media(max-width:450px){.hero h1{font-size:48px;letter-spacing:-2px}.ranks{grid-template-columns:1fr}}
+
+.custom-box{
+  margin-top:28px;
+  padding:30px;
+  min-height:190px;
+  border:1px solid rgba(36,168,255,.18);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(36,168,255,.07),rgba(255,255,255,.018));
+  transition:.35s ease;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+.custom-box::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(120deg,transparent,rgba(36,168,255,.18),transparent);
+  transform:translateX(-100%);
+  transition:.6s ease;
+}
+.custom-box:hover{
+  transform:translateY(-8px) scale(1.01);
+  border-color:rgba(36,168,255,.65);
+  box-shadow:0 18px 55px rgba(36,168,255,.16);
+}
+.custom-box:hover::before{transform:translateX(100%)}
+.custom-box h3{
+  position:relative;
+  z-index:1;
+  font-size:22px;
+  margin-bottom:12px;
+  color:#fff;
+}
+.custom-box p{
+  position:relative;
+  z-index:1;
+  color:#9ca7b3;
+  line-height:1.8;
+  font-size:14px;
+}
+</style>
+</head>
+<body>
+<nav><div class="logo"><div class="logo-icon">HS</div><div>DIVISION <span>TROOPER</span></div></div><ul><li><a href="#home">HOME</a></li><li><a href="#division">DIVISION</a></li><li><a href="#ranks">RANKS</a></li><li><a href="#rules">RULES</a></li><li><a href="#join">JOIN US</a></li></ul></nav>
+<main>
+<section class="hero" id="home"><div class="hero-content"><div class="badge">HIGH SPEED DIVISION</div><h1>DIVISION<br><span>TROOPER</span></h1><p>خوش آمدید به دویژن تروپر شما میتوانید از ویژنگی های شگفت انگیز و فضای صمیمانه این دویژن استفاده کنید برای عضویت در دویژن تروپر وارد گروه ما بشید</p><div class="buttons"><a class="btn btn-primary" href="#join">APPLY NOW</a><a class="btn btn-secondary" href="#division">LEARN MORE</a></div></div>
+<div class="hero-panel"><div class="status"><div><small>DIVISION STATUS</small><h3>HIGH SPEED</h3></div><div class="online">● ACTIVE</div></div><div class="stat"><div class="stat-top"><span>Operational Readiness</span><b>90%</b></div><div class="bar"><i></i></div></div><div class="stat"><div class="stat-top"><span>Training Level</span><b>87%</b></div><div class="bar"><i style="width:87%"></i></div></div><div class="stat"><div class="stat-top"><span>Team Discipline</span><b>95%</b></div><div class="bar"><i style="width:95%"></i></div></div></div></section>
+<section id="division"><div class="section-head"><div class="kicker">ABOUT THE UNIT</div><h2>High Speed Division</h2><p>Professional operations. Fast response. Complete discipline.</p></div><div class="grid"><div class="card"><div class="card-icon">⚡</div><h3>آرپی های بسیار زیاد</h3><p>شما میتوانید از آرپی های بسیار زیاد مانند پرسوت اکورت کردن ترافیک استاپ بحره مند شوید</p></div><div class="card"><div class="card-icon">◆</div><h3>تاثییر بسیار زیاد در رنک آپ</h3><p>شما با این دویژن میتوانید هر چه سریع تر رنک آپ بشوید و از آرپی های متنوع این دویژن لذت ببرید</p></div><div class="card"><div class="card-icon">✦</div><h3>دسترسی به تمامی ماشین های های اسپید</h3><p>دسترسی به تمامی ماشین های سرعتی و متور ها با این ماشین ها میتونی پرسوت شگفت انگیز داشته باشی</p></div></div>
+<div class="custom-box">
+  <h3>YOUR TITLE HERE</h3>
+  <p>دویژن تروپر یک دویژن تعقیب و گریز با ماشین های پر سرعت یا های اسپید است که قبل از گرفتن این دویژن باید نکاتی راعیت کنیم و قوانینی را مرور کنیم
+
+  </p>
+  <h2>Traffic Stop</h2>
+
+  <h3>در غیر این صورت اگر فرد با شما همکاری کرد باید چه کرد</h3>
+  <p>فاصله خودروی شما با خودروی  ساسپکت باید حداقال  5 متر باشد </p>
+  <p>به فرد میگویید لطفا سمت راست جاده بزنید بقل ماشین خاموش کرده و پیاده شوید </p>
+  <p>پیاده میشوید و علت ترافیک استاپ فرد بیان میکنید </p>
+  <p>از فرد درخواست میکنید که آیدی کارت و گواهینامه او را چک کنید</p>
+  <h5>نکته حتما در رادیو اطلاعات و دلیل ترافیک استاپ فرد اعلام میکنید</h5>
+  <br><br>
+  <h2>Vehicle pursuit</h2>
+  <p>مدت زمان تعقیب گریز فرد تا 5 دقیقه میباشد  </p>
+  <p>اخطار اول 15 ثانیه </p>
+  <p>اخطار اول 30 ثانیه </p>
+  <p>اخطار اول 20 ثانیه </p>
+  <p>اقدامات قانونی در صورت عدم تکمین</p>
+  <p>در صورتی که فرد با شما همکاری نکرد از دیسپچ یا های رنک مربوطه اجازه شات فایر را میگیرید و به لاستیک های فرد تیر اندازی میکنیدد </p>
+  <p>اگر فرد به  ماشین شما تیر اندازی میکند درخواست 70-10 بدهید </p>
+  <h4>نکته در تمام رانندگی ها شما باید یک پسنجر داشته باشید</h4>
+  <br>br
+  <h4>تمامی قوانین مشاهده شده شما باید کاملا بلد باشید</h4>
+  
+
+</div>
+</section>
+<section id="ranks"><div class="section-head"><div class="kicker">CHAIN OF COMMAND</div><h2>Division Ranks</h2><p>The internal structure of the High Speed Division.</p></div><div class="ranks"><div class="rank"><div class="rank-number">01</div><h3>Trooper</h3><p>ENTRY MEMBER</p></div><div class="rank"><div class="rank-number">02</div><h3>Senior Trooper</h3><p>EXPERIENCED</p></div><div class="rank"><div class="rank-number">03</div><h3>Head Trooper</h3><p>COMMAND</p></div><div class="rank"><div class="rank-number">04</div><h3>Chife Trooper</h3><p>haghi COMMAND</p></div><div class="rank"><div class="rank-number">05</div><h3></h3><p>DIVISION HEAD</p></div></div></section>
+<section id="rules"><div class="section-head"><div class="kicker">CODE OF CONDUCT</div><h2>Division Rules</h2><p>Every member is expected to follow these standards.</p></div><div class="rules"><div class="rule"><div class="rule-num">01</div><p>احترام به های رنک و یکدیگر</p></div><div class="rule"><div class="rule-num">02</div><p>رعایت کردن قوانین و نحوه اجرا کردن آن</p></div><div class="rule"><div class="rule-num">03</div><p>بلد بودن تمامی قوانین شهری</p></div><div class="rule"><div class="rule-num">04</div><p>داشتن رنک حداقل آفیسر 2</p></div><div class="rule"><div class="rule-num">05</div><p>بلد بودن نحوه آدام بندی و مدریت حادثه</p></div><div class="rule"><div class="rule-num">06</div><p>بلد بودن کد های رادیویی</p></div></div></section>
+<section id="join"><div class="join"><div class="kicker">BECOME A MEMBER</div><h2>Ready to Join?</h2><p>Think you have what it takes to become a High Speed Division Trooper? Submit your application and begin your path through the division.</p><div class="buttons" style="justify-content:center"><a class="btn btn-primary" href="https://discord.com" target="_blank">JOIN DISCORD</a><a class="btn btn-secondary" href="mailto:admin@example.com">CONTACT COMMAND</a></div></div></section>
+</main>
+<footer><div>© 2026 Division Trooper — High Speed Division</div><div>Professional • Fast • Disciplined</div></footer>
+</body>
+</html>
